@@ -1,1 +1,6 @@
-
+{
+  "version": 2,
+  "categories_url": "categories_v2.json",
+  "test_series_url": "test_series_v2.json",
+  "questions_url": "questions_v2.json"
+}
