@@ -1,1 +1,22 @@
-{"categories":{"version":2,"filename":"categories_v2.json"},"test_series":{"version":4,"filename":"test_series_v4.json"},"questions":{"version":4,"filename":"questions_v4.json"},"study_materials":{"version":3,"filename":"study_materials_v3.json"},"exam_alerts":{"version":3,"filename":"exam_alerts_v3.json"}}
+{
+  "categories": {
+    "version": 2,
+    "filename": "categories_v2.json"
+  },
+  "test_series": {
+    "version": 4,
+    "filename": "test_series_v4.json"
+  },
+  "questions": {
+    "version": 4,
+    "filename": "questions_v4.json"
+  },
+  "study_materials": {
+    "version": 4,
+    "filename": "study_materials_v4.json"
+  },
+  "exam_alerts": {
+    "version": 3,
+    "filename": "exam_alerts_v3.json"
+  }
+}
