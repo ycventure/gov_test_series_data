@@ -4,12 +4,12 @@
         "filename": "categories_v1.json"
     },
     "test_series": {
-        "version": 1,
-        "filename": "test_series_v1.json"
+        "version": 2,
+        "filename": "test_series_v2.json"
     },
     "questions": {
-        "version": 1,
-        "filename": "questions_v1.json"
+        "version": 2,
+        "filename": "questions_v2.json"
     },
     "study_materials": {
         "version": 1,
