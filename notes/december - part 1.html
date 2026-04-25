@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="mr"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            }) MIT License
+
+ Copyright (c) 2017-2023 W.Y.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+*/
+function u(a,b){const d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);const c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{let a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){const b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){const c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{const c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){const c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);const e=yield c.blob();return new Promise((f,g)=>{const k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){let c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){const c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());let e;try{const f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){const b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");const c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;let c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){const c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{let g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){const g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){const b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{const e=d?(new URL(b,d||void 0)).toString():b;let f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){const [c,,e]=ia.exec(d)||[];if(!e)return"";if(e===b)return`src: ${c};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;const c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c;const e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){const d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){const d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){let d=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){let g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];const b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){const d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){const g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}const d=new Set;b(a);return d}function ua(a,b){return t(function*(){const d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){const d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){const c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b);var e=yield wa(a,b);e=yield B(e);const f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=
+16384));f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;const c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){const a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){let b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){const b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+})();</script><script>(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script>
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script ws-interception-config="{&quot;parentOrigin&quot;:&quot;https://gemini.google.com&quot;,&quot;proxiedDomains&quot;:[]}">(function(){'use strict';var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,d,e){if(b==Array.prototype||b==Object.prototype)return b;b[d]=e.value;return b};function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var d=0;d<b.length;++d){var e=b[d];if(e&&e.Math==Math)return e}throw Error("Cannot find global object");}var w=v(this);
+function y(b,d){if(d)a:{var e=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var k=b[h];if(!(k in e))break a;e=e[k]}b=b[b.length-1];h=e[b];d=d(h);d!=h&&d!=null&&u(e,b,{configurable:!0,writable:!0,value:d})}}function z(b){function d(h){return b.next(h)}function e(h){return b.throw(h)}return new Promise(function(h,k){function m(n){n.done?h(n.value):Promise.resolve(n.value).then(d,e).then(m,k)}m(b.next())})}y("globalThis",function(b){return b||w});/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+function A(b,d){function e(){}e.prototype=d.prototype;b.i=d.prototype;b.prototype=new e;b.prototype.constructor=b;b.g=function(h,k,m){for(var n=Array(arguments.length-2),p=2;p<arguments.length;p++)n[p-2]=arguments[p];return d.prototype[k].apply(h,n)}};function B(b,d,e="*"){function h(a){if(typeof a==="string")return F.encode(a).buffer;if(a instanceof ArrayBuffer)return a.slice(0);if(ArrayBuffer.isView(a))return a.buffer.slice(a.byteOffset,a.byteOffset+a.byteLength);throw Error("Invalid data type");}function k(a){a=h(a);const f={type:"send",data:new Uint8Array(a)};let g;(g=r)==null||g.postMessage(f,[a])}function m(){if(!r)throw Error("Data port not captured yet.");r.onmessage=a=>{if(a.data.type==="message"){a=new MessageEvent("message",{data:G.decode(a.data.data)});
+let f;(f=c.onmessage)==null||f.call(c,a);c.dispatchEvent(a)}}}function n(){if(!t)throw Error("Control port not captured yet.");t.onmessage=a=>{switch(a.data.type){case "open":l=1;var f=new Event("open"),g;(g=c.onopen)==null||g.call(c,f);c.dispatchEvent(f);q.forEach(H=>{k(H)});q=[];break;case "close":g=a.data;l=3;g=new CloseEvent("close",{code:g.code,reason:g.reason,wasClean:g.wasClean});(f=c.onclose)==null||f.call(c,g);c.dispatchEvent(g);break;case "error":l=3;f=new Event("error");let x;(x=c.onerror)==
+null||x.call(c,f);c.dispatchEvent(f)}}}function p(a){return z(function*(){const f=new MessageChannel;t=f.port1;const g=new MessageChannel;r=g.port1;n();m();window.parent.postMessage({type:"websocket_open",portOrdering:["control","data"],url:b,protocols:a||[],connectionId:I},e,[f.port2,g.port2])}())}const c=Reflect.construct(EventTarget,[],new.target);c.CONNECTING=0;c.OPEN=1;c.CLOSING=2;c.CLOSED=3;c.url=b;c.binaryType="arraybuffer";c.protocol="";c.h="";let l=0,t=null,r=null,q=[];const F=new TextEncoder,
+G=new TextDecoder;c.onopen=null;c.onmessage=null;c.onclose=null;c.onerror=null;Object.defineProperty(c,"readyState",{get:()=>l,enumerable:!0,configurable:!0});Object.defineProperty(c,"bufferedAmount",{get:()=>{let a=0;q.forEach(f=>{a+=typeof f==="string"?f.length:f.byteLength});return a},enumerable:!0,configurable:!0});const I=function(){let a;return((a=globalThis.crypto)==null?0:a.randomUUID)?globalThis.crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,f=>{const g=Math.random()*
+16|0;return(f==="x"?g:g&3|8).toString(16)})}();c.send=a=>{if(l===1)a instanceof Blob?a.arrayBuffer().then(f=>{k(f)}):k(a);else if(l===0)if(typeof a==="string")q.push(a);else if(a instanceof ArrayBuffer||ArrayBuffer.isView(a))q.push(h(a));else throw Error("Sending Blob is not supported before the connection is open.");else console.debug("WebSocket send called in CLOSING or CLOSED state; ignored.")};c.close=(a=1E3,f="")=>{if(l!==2&&l!==3){l=2;a={type:"close",code:a,reason:f,wasClean:a===1E3};var g;
+(g=t)==null||g.postMessage(a)}};Promise.resolve().then(()=>p(d));return c}A(B,EventTarget);const C=document.currentScript,D=C==null?void 0:C.getAttribute("ws-interception-config");if(!D)throw Error("WebSocket Interceptor: Missing ws-interception-config attribute in the script tag.");const E=JSON.parse(D);if(!E.parentOrigin||typeof E.parentOrigin!=="string")throw Error("WebSocket Interceptor: Invalid parentOrigin in ws-interception-config");
+(function(b){var d=Object.getOwnPropertyDescriptor(window,"WebSocket");if(!d||d.writable||d.configurable)d=Object.assign(function(e,h){try{const k=(new URL(e)).hostname;if(b.proxiedDomains.some(m=>k===m||k.endsWith(`.${m}`)))return new B(e,h,b.parentOrigin)}catch(k){throw window.parent.postMessage({type:"websocket_blocked",url:e,reason:"blocked_invalid_url"},b.parentOrigin),new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");}window.parent.postMessage({type:"websocket_blocked",
+url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");},{CONNECTING:0,OPEN:1,CLOSING:2,CLOSED:3}),Object.defineProperty(window,"WebSocket",{value:d,writable:!1,configurable:!1})})({proxiedDomains:E.proxiedDomains||[],parentOrigin:E.parentOrigin});}).call(this);
+</script><script>((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-3-flash-preview","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-2.5-flash-image-preview","imageTransformModelName":"gemini-3-pro-image-preview-11-2025","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"]})</script><script>(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
+</script><script>(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Affairs - Mission Adhikari 360</title>
+    <!-- Importing Google Fonts for Handwritten and Devanagari text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&amp;family=Caveat:wght@600;700&amp;family=Shadows+Into+Light&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* BASE SETUP */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #cbd5e1;
+            display: grid;
+            gap: 40px;
+            grid-template-columns: 1fr;
+            place-items: center;
+            margin: 0;
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+
+        /* SLIDE CONTAINER & NOTEBOOK EFFECT */
+        .slide-container {
+            align-items: stretch;
+            background-color: #fdfcf9;
+            background-image: url('http://googleusercontent.com/image_collection/image_retrieval/741410653098426267');
+            background-size: cover;
+            background-blend-mode: multiply;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), inset 0 0 20px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Baloo 2', sans-serif;
+            min-height: 720px;
+            height: auto;
+            position: relative;
+            width: 1280px;
+            padding-bottom: 20px;
+        }
+
+        /* Red Margin Line (Notebook style) */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            left: 140px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: rgba(239, 68, 68, 0.3);
+            z-index: 0;
+        }
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            left: 146px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: rgba(239, 68, 68, 0.15);
+            z-index: 0;
+        }
+
+        /* NOTEBOOK CONTENT WRAPPER */
+        .notebook-content {
+            padding: 30px 40px 20px 170px;
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER SECTION */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .main-title {
+            font-family: 'Caveat', cursive;
+            font-size: 45px;
+            font-weight: 700;
+            color: #be123c;
+            transform: rotate(-2deg);
+            border: 3px dashed #be123c;
+            padding: 5px 25px;
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 2px 3px 0px rgba(190, 18, 60, 0.2);
+        }
+
+        .page-number {
+            font-family: 'Caveat', cursive;
+            font-size: 28px;
+            color: #0f172a;
+            border: 2px solid #0f172a;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(5deg);
+        }
+
+        /* Q&A SECTION */
+        .qa-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-grow: 1;
+        }
+
+        .qa-block {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            position: relative;
+        }
+
+        .q-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .q-icon {
+            font-size: 24px;
+            margin-top: 5px;
+            color: #f59e0b;
+        }
+
+        .question {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.3;
+            text-shadow: 0.5px 0.5px 0px rgba(0,0,0,0.05);
+        }
+
+        .a-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding-left: 10px;
+        }
+
+        .a-icon {
+            font-size: 20px;
+            color: #3b82f6;
+            margin-top: 8px;
+            font-family: 'Caveat', cursive;
+            font-weight: bold;
+        }
+
+        .answer {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0369a1;
+            line-height: 1.3;
+        }
+
+        /* HIGHLIGHTER EFFECTS */
+        mark.hl-yellow {
+            background-color: rgba(253, 224, 71, 0.7);
+            padding: 2px 8px;
+            border-radius: 8px 3px 8px 4px;
+            color: #0c4a6e;
+            box-shadow: -2px 0 0 rgba(253, 224, 71, 0.7), 2px 0 0 rgba(253, 224, 71, 0.7);
+        }
+
+        mark.hl-green {
+            background-color: rgba(134, 239, 172, 0.6);
+            padding: 2px 8px;
+            border-radius: 4px 8px 3px 8px;
+            color: #064e3b;
+        }
+        
+        mark.hl-pink {
+            background-color: rgba(249, 168, 212, 0.6);
+            padding: 2px 8px;
+            border-radius: 6px 4px 6px 3px;
+            color: #831843;
+        }
+
+        /* SEPARATOR DOODLE */
+        .doodle-line {
+            border: none;
+            height: 2px;
+            background-image: linear-gradient(to right, #94a3b8 30%, rgba(255,255,255,0) 0%);
+            background-position: bottom;
+            background-size: 15px 2px;
+            background-repeat: repeat-x;
+            margin: 5px 0 5px 40px;
+            opacity: 0.5;
+        }
+
+        /* FOOTER */
+        .footer-section {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-top: 15px;
+            margin-top: auto;
+        }
+
+        .footer-text {
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 26px;
+            color: #475569;
+            transform: rotate(-3deg);
+            opacity: 0.8;
+        }
+
+        /* DECORATIONS */
+        .tape-corner {
+            position: absolute;
+            top: -10px;
+            left: -20px;
+            width: 100px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transform: rotate(-45deg);
+            z-index: 10;
+        }
+
+        /* ACTION BUTTONS */
+        .action-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            background-color: #be123c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-family: 'Baloo 2', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(190, 18, 60, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background-color: #9f1239;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(190, 18, 60, 0.4);
+        }
+
+        .action-btn.print-btn {
+            background-color: #0369a1;
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.3);
+        }
+
+        .action-btn.print-btn:hover {
+            background-color: #0284c7;
+            box-shadow: 0 6px 16px rgba(3, 105, 161, 0.4);
+        }
+
+        @media print {
+            .action-buttons {
+                display: none !important;
+            }
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .slide-container {
+                box-shadow: none;
+                break-after: page;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide-container" id="slide1">
+    <div class="tape-corner"></div>
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">01</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-thumbtack" style="color: #ef4444; transform: rotate(-20deg);"></i></div><p class="question">१. न्यायमूर्ती सूर्यकांत यांची ३० ऑक्टोबर २०२५ रोजी भारताचे ५३ वे सरन्यायाधीश (CJI) म्हणून नियुक्ती करण्यात आली असून, ते २४ नोव्हेंबर २०२५ रोजी पदभार स्वीकारतील, त्यांचा कार्यकाळ __________ पर्यंत असेल.</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">९ फेब्रुवारी २०२७</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-star" style="color: #f59e0b;"></i></div><p class="question">२. पंतप्रधान नरेंद्र मोदी यांनी सरदार वल्लभभाई पटेल यांच्या १५० व्या जयंतीनिमित्त केवडिया येथे किती कोटी रुपयांच्या विकास प्रकल्पांचे उद्घाटन आणि पायाभरणी केली?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">₹१,२१९ कोटी</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-circle-dot" style="color: #8b5cf6;"></i></div><p class="question">३. सार्वजनिक सेवेतील नैतिकता आणि उत्कृष्टतेवरील चर्चेला प्रोत्साहन देण्यासाठी “Reimagining Governance: Discourse for Excellence” च्या २२ व्या आवृत्तीचे आयोजन कोणत्या संस्थेने केले?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">कर्मचारी भविष्य निर्वाह निधी संघटना</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-globe" style="color: #3b82f6;"></i></div><p class="question">४. कोणत्या देशाने आपल्या राष्ट्रीय चलनाशी (येन) जोडलेले जगातील पहिले स्टेबलकॉइन (stablecoin) लाँच केले आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: जपान</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-bookmark" style="color: #10b981;"></i></div><p class="question">५. २०२५ मध्ये मलेशियाकडून आसियानचे (ASEAN) अध्यक्षपद अधिकृतपणे कोणत्या देशाने स्वीकारले आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">फिलिपिन्स</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide-container" id="slide2">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">02</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-location-dot" style="color: #ec4899;"></i></div><p class="question">६. ऑक्टोबर २०२५ मध्ये सायबर गुन्हेगारी विरोधी संयुक्त राष्ट्र परिषद कोठे आयोजित करण्यात आली होती?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">हनोई, व्हिएतनाम</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-building" style="color: #eab308;"></i></div><p class="question">७. पंचायती राज मंत्रालयाने शिक्षण मंत्रालय आणि आदिवासी विकास मंत्रालयाच्या सहकार्याने पहिला "आदर्श युवा ग्रामसभा (MYGS)" उपक्रम सुरू केला. हा उपक्रम कोठे सुरू करण्यात आला?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">नवी दिल्ली</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-bolt" style="color: #ef4444;"></i></div><p class="question">८. भारतातील कोळसा क्षेत्रात पारदर्शकता, समन्वय आणि डिजिटलायझेशन वाढवण्यासाठी नुकतेच कोणत्या केंद्रीय मंत्र्यांनी 'कोयला शक्ती' (KOYLA SHAKTI) डॅशबोर्ड आणि CLAMP पोर्टल लाँच केले?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">जी. किशन रेड्डी</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-quote-left" style="color: #8b5cf6;"></i></div><p class="question">९. नागरिकांमध्ये पैशांची बचत आणि आर्थिक सुरक्षेच्या महत्त्वाला चालना देण्यासाठी भारतात दरवर्षी ३० ऑक्टोबर रोजी जागतिक बचत दिन साजरा केला जातो. २०२५ च्या जागतिक बचत दिनाची अधिकृत थीम काय आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: “Conquer your tomorrow”</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-quote-right" style="color: #10b981;"></i></div><p class="question">१०. सरदार वल्लभभाई पटेल यांच्या जयंतीनिमित्त दरवर्षी ३१ ऑक्टोबर रोजी राष्ट्रीय एकता दिन साजरा केला जातो. २०२५ च्या राष्ट्रीय एकता दिनाची अधिकृत थीम काय आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">एक भारत, आत्मनिर्भर भारत</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide-container" id="slide3">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">03</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-trophy" style="color: #3b82f6;"></i></div><p class="question">११. नवी मुंबईत दक्षिण आफ्रिकेचा ५२ धावांनी पराभव करून भारतीय महिला क्रिकेट संघाने २०२५ चा पहिला आयसीसी महिला एकदिवसीय विश्वचषक जिंकून इतिहास रचला. या स्पर्धेत 'प्लेअर ऑफ द टूर्नामेंट' म्हणून कोणाची निवड झाली?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">दीप्ती शर्मा</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-leaf" style="color: #10b981;"></i></div><p class="question">१२. जागतिक शाकाहारी (Vegan) दिन दरवर्षी कोणत्या तारखेला साजरा केला जातो?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">१ नोव्हेंबर</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-chart-line" style="color: #eab308;"></i></div><p class="question">१३. ५ ट्रिलियन अमेरिकन डॉलर्सचे बाजार मूल्य गाठणारी जगातील पहिली कंपनी कोणती?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">एनव्हिडिया</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-medal" style="color: #ef4444;"></i></div><p class="question">१४. क्रिकेटमधील उत्कृष्ट योगदानाबद्दल युनायटेड किंगडम सरकारने कोणाला प्रतिष्ठित 'नाईटहूड' (Knighthood) पुरस्काराने सन्मानित केले आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: जेम्स अँडरसन</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-award" style="color: #8b5cf6;"></i></div><p class="question">१५. डोनाल्ड ट्रम्प यांना प्रदान करण्यात आलेला 'ग्रँड ऑर्डर ऑफ मुगुंगवा' हा कोणत्या देशाचा सर्वोच्च राष्ट्रीय सन्मान आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">दक्षिण कोरिया</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide-container" id="slide4">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">04</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-map" style="color: #ec4899;"></i></div><p class="question">१६. उत्तर प्रदेश सरकारने नवीन जिल्ह्याच्या निर्मितीचा प्रस्ताव कोणत्या नावाने ठेवला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">कल्याण सिंह नगर</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-masks-theater" style="color: #f59e0b;"></i></div><p class="question">१७. मणिपूरचा कापणीनंतरचा 'कवांग कुत' हा सण प्रामुख्याने कोणत्या समुदायांद्वारे साजरा केला जातो?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">चिन-कुकी-मिझो</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-fish" style="color: #3b82f6;"></i></div><p class="question">१८. पंजाब सरकारने कोणत्या माशाला अधिकृतपणे 'राज्य मासा' म्हणून घोषित केले आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">रोहू</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-wifi" style="color: #10b981;"></i></div><p class="question">१९. भारतातील ग्रामीण भागात भौतिक आणि डिजिटल सेवांना जोडण्यासाठी 'समृद्ध ग्राम फिजीटल सर्व्हिसेस पायलट प्रोजेक्ट' कोणत्या संस्थेने सुरू केला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: टेलिकॉम सेंटर ऑफ एक्सलन्स</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-file-contract" style="color: #8b5cf6;"></i></div><p class="question">२०. इंटरनॅशनल कॉन्फरन्स ऑन कॉम्प्युटिंग अँड कम्युनिकेशन नेटवर्क्स (ICCCNet -UK 2025) मध्ये सर्वोत्कृष्ट पेपरचा पुरस्कार कोणी जिंकला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">बालाजी कृष्णन</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide-container" id="slide5">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">05</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-shield-halved" style="color: #ef4444;"></i></div><p class="question">२१. आगामी चाणक्य डिफेन्स डायलॉग (CDD) २०२५ चा पूर्व-कार्यक्रम म्हणून भारतीय लष्कराने सेंटर फॉर लँड वॉरफेअर स्टडीज (CLAWS) च्या सहकार्याने नवी दिल्ली येथे यंग लीडर्स फोरम आयोजित केला होता. चाणक्य डिफेन्स डायलॉग २०२५ ची थीम काय होती?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">बदलासाठी सुधारणा: एक मजबूत, सुरक्षित आणि विकसित भारत</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-fingerprint" style="color: #3b82f6;"></i></div><p class="question">२२. 'आधार व्हिजन २०३२' तयार करण्यासाठी UIDAI ने तांत्रिक आणि धोरणात्मक आढावा सुरू केला आहे. या उपक्रमाला मार्गदर्शन करण्यासाठी स्थापन करण्यात आलेल्या तज्ज्ञ समितीचे अध्यक्ष कोण आहेत?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">नीलकंठ मिश्रा</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-globe" style="color: #10b981;"></i></div><p class="question">२३. २०२५ मध्ये COP30 हवामान शिखर परिषद कोठे आयोजित केली जाईल?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">बेलेम, ब्राझील</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-flask" style="color: #8b5cf6;"></i></div><p class="question">२४. भारत आंतरराष्ट्रीय विज्ञान महोत्सव (IISF) २०२५ कोठे आयोजित केला जाईल?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: चंदीगड</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-store" style="color: #eab308;"></i></div><p class="question">२५. स्थानिक कारागीर आणि स्वदेशी उत्पादनांना प्रोत्साहन देण्यासाठी कोणत्या संस्थेने 'आभार' हे ऑनलाइन स्टोअर सुरू केले आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">भारतीय रेल्वे</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide-container" id="slide6">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">06</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-utensils" style="color: #ec4899;"></i></div><p class="question">२६. कोणत्या भारतीय शहराला नुकतेच त्याच्या शतकानुशतके जुन्या पाककला परंपरेसाठी आणि प्रसिद्ध अवधी खाद्यपदार्थांसाठी 'युनेस्को क्रिएटिव्ह सिटी ऑफ गॅस्ट्रोनॉमी' हा प्रतिष्ठित किताब मिळाला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">लखनौ</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-hands-holding" style="color: #ef4444;"></i></div><p class="question">२७. नोव्हेंबर २०२५ मध्ये कोणत्या भारतीय राज्याला 'अत्यंत गरिबीमुक्त' घोषित करण्यात आले आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">केरळ</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-indian-rupee-sign" style="color: #3b82f6;"></i></div><p class="question">२८. अधिकृत आकडेवारीनुसार, ऑक्टोबर २०२५ मध्ये भारताचे एकूण GST संकलन किती होते?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">₹१.९६ लाख कोटी</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-water" style="color: #10b981;"></i></div><p class="question">२९. जागतिक जेलीफिश दिन दरवर्षी कोणत्या तारखेला साजरा केला जातो?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: ३ नोव्हेंबर</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-medal" style="color: #f59e0b;"></i></div><p class="question">३०. नुकतेच निधन झालेले भारताचे माजी हॉकी गोलकीपर मॅन्युएल फ्रेडरिक्स यांनी कोणत्या वर्षी ऑलिम्पिक पदक जिंकले होते?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">१९७२ म्युनिक ऑलिम्पिक</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide-container" id="slide7">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">07</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-rocket" style="color: #8b5cf6;"></i></div><p class="question">३१. भारतीय नौदलाचा सर्वात प्रगत दळणवळण उपग्रह GSAT-7R यशस्वीरित्या कक्षेत प्रस्थापित करण्यासाठी इस्रोने (ISRO) कोणते प्रक्षेपण यान वापरले?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">LVM3</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-user-tie" style="color: #eab308;"></i></div><p class="question">३२. डॉ. दीपक मित्तल यांनी नुकतीच कोणत्या देशात भारताचे नियुक्त राजदूत म्हणून पदभार स्वीकारला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">संयुक्त अरब अमिराती</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-chess-knight" style="color: #ec4899;"></i></div><p class="question">३३. पणजी येथे अनावरण करण्यात आलेल्या 'फिडे (FIDE) विश्वचषक बुद्धिबळ २०२५' च्या नवीन ट्रॉफीला कोणत्या महान भारतीय बुद्धिबळपटूचे नाव देण्यात आले आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">विश्वनाथन आनंद</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-water" style="color: #3b82f6;"></i></div><p class="question">३४. जागतिक त्सुनामी जागरूकता दिन दरवर्षी कोणत्या तारखेला पाळला जातो?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: ५ नोव्हेंबर</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-fish" style="color: #10b981;"></i></div><p class="question">३५. कोची येथे केंद्रीय मंत्री जॉर्ज कुरियन यांनी पूर्णपणे डिजिटल 'सागरी मत्स्यव्यवसाय गणना (MFC) २०२५' चा शुभारंभ केला. याचे अधिकृत घोषवाक्य काय आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">स्मार्ट सेन्सस, स्मार्ट फिशरीज</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide-container" id="slide8">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">08</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-school" style="color: #ef4444;"></i></div><p class="question">३६. भारताच्या अनुदान साहाय्याने बांधण्यात आलेल्या एका नवनिर्मित बहु-वांशिक त्रिभाषिक शाळेचे उद्घाटन करून ती श्रीलंका सरकारकडे सुपूर्द करण्यात आली. हा कार्यक्रम कोणत्या शहरात आयोजित करण्यात आला होता?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">पोलोन्नारुवा</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-microchip" style="color: #f59e0b;"></i></div><p class="question">३७. पंतप्रधान नरेंद्र मोदी यांनी इमर्जिंग सायन्स अँड टेक्नॉलॉजी इनोव्हेशन कॉन्फरन्स (ESTIC) २०२५ चे उद्घाटन कोठे केले?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">भारत मंडपम, नवी दिल्ली</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-book" style="color: #8b5cf6;"></i></div><p class="question">३८. १० व्या आंतरराष्ट्रीय गीता महोत्सव २०२५ साठी भागीदार राज्य म्हणून कोणत्या राज्याची निवड करण्यात आली आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">मध्य प्रदेश</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-anchor" style="color: #3b82f6;"></i></div><p class="question">३९. भारतीय नौदलाचे ४० वे चीफ ऑफ मटेरिअल म्हणून कोणी पदभार स्वीकारला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: व्हाइस अॅडमिरल बी. शिवकुमार</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-jet-fighter" style="color: #10b981;"></i></div><p class="question">४०. नोव्हेंबर २०२५ मध्ये भारतीय नौदल, लष्कर आणि हवाई दल संयुक्तपणे आयोजित करत असलेल्या मोठ्या प्रमाणावरील त्रि-सेवा सरावाचे नाव काय आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">त्रिशूल</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide-container" id="slide9">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">09</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-water" style="color: #eab308;"></i></div><p class="question">४१. गोगाबिल तलावाला आंतरराष्ट्रीय महत्त्वाचे रामसर स्थळ म्हणून घोषित करण्यात आले असून ते भारताचे ९४ वे रामसर स्थळ बनले आहे. हा तलाव कोणत्या राज्यात आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">बिहार</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-indian-rupee-sign" style="color: #ec4899;"></i></div><p class="question">४२. १५ व्या वित्त आयोगाच्या अनुदानांतर्गत केंद्र सरकारने ओडिशाच्या ग्रामीण स्थानिक स्वराज्य संस्थांना किती रक्कम जारी केली आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">₹४४४ कोटी</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-user-tie" style="color: #ef4444;"></i></div><p class="question">४३. नोव्हेंबर २०२५ मध्ये भारतीय मानक ब्युरोचे (BIS) नवे महासंचालक म्हणून कोणी पदभार स्वीकारला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">संजय गर्ग</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-table-tennis-paddle-ball" style="color: #3b82f6;"></i></div><p class="question">४४. व्यावसायिक टेनिसमधून निवृत्ती जाहीर केलेल्या रोहन बोपण्णाने आपल्या कारकिर्दीत किती ग्रँड स्लॅम जेतेपदे जिंकली आहेत?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: दोन</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-hurricane" style="color: #8b5cf6;"></i></div><p class="question">४५. नुकतेच बातम्यांमध्ये आलेले "मेलिसा" (Melissa) म्हणजे काय?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">जमैका, क्युबा आणि बहामासला धडकलेले विनाशकारी उष्णकटिबंधीय चक्रीवादळ</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide-container" id="slide10">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">10</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-medal" style="color: #10b981;"></i></div><p class="question">४६. दुबईत झालेल्या २०२५ पॅरा शूटिंग वर्ल्ड कपमध्ये अवनी लेखराने कोणत्या प्रकारात सुवर्णपदक जिंकले?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">महिलांची १० मीटर एअर रायफल स्टँडिंग SH1</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-cricket-bat-ball" style="color: #f59e0b;"></i></div><p class="question">४७. नुकतीच टी-२० आंतरराष्ट्रीय क्रिकेटमधून निवृत्ती जाहीर करणारा केन विल्यमसन कोणत्या देशाकडून खेळत होता?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">न्यूझीलंड</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-trophy" style="color: #ec4899;"></i></div><p class="question">४८. ४२ वी इंडियन ऑइल सर्व्हो सुरजित हॉकी ट्रॉफी २०२५ कोणत्या संघाने जिंकली?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">इंडियन ऑइल मुंबई</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-map-pin" style="color: #3b82f6;"></i></div><p class="question">४९. २०२५ च्या आशियाई युवा क्रीडा स्पर्धा कोठे आयोजित करण्यात आल्या होत्या?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: मनामा, बहरीन</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-user-graduate" style="color: #ef4444;"></i></div><p class="question">५०. आयआयटी कानपूरने (IIT Kanpur) त्यांच्या ६६ व्या स्थापना दिन समारंभात खालीलपैकी कोणाला 'डिस्टिंग्विश्ड अल्युमनस अवॉर्ड' (DAA) प्रदान केला?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">ज्ञानेश कुमार</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide-container" id="slide11">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">11</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-tree" style="color: #8b5cf6;"></i></div><p class="question">५१. युद्ध आणि सशस्त्र संघर्षात पर्यावरणाच्या शोषणास प्रतिबंध करण्यासाठी आंतरराष्ट्रीय दिन दरवर्षी कोणत्या तारखेला पाळला जातो?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">६ नोव्हेंबर</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-map" style="color: #eab308;"></i></div><p class="question">५२. ‘बाकू ते बेलेम रोडमॅप ते १.३ ट्रिलियन’ कोणत्या COP परिषदेच्या अध्यक्षतेखाली प्रसिद्ध करण्यात आला?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">COP30</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-plane-departure" style="color: #10b981;"></i></div><p class="question">५३. भारताने नुकतेच कोणत्या हवाई तळावरून माघार घेतली, ज्यामुळे भारताची एकमेव परदेशी लष्करी उपस्थिती संपुष्टात आली?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">आयनी एअरबेस</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-university" style="color: #3b82f6;"></i></div><p class="question">५४. QS आशिया विद्यापीठ क्रमवारी २०२६ मध्ये कोणत्या विद्यापीठाने प्रथम क्रमांक पटकावला?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: हाँगकाँग विद्यापीठ</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-user-tie" style="color: #ec4899;"></i></div><p class="question">५५. आशीर्वाद मायक्रोफायनान्स लिमिटेडचे ​​सह-मुख्य कार्यकारी अधिकारी (Co-CEO) म्हणून कोणाची नियुक्ती करण्यात आली आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">जेरार्ड डेव्हिड मनोज पासंगा</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide-container" id="slide12">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">12</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-handshake" style="color: #ef4444;"></i></div><p class="question">५६. संरक्षण सहकार्यावरील १७ वा भारत-इस्रायल संयुक्त कार्यगट (JWG) कोठे आयोजित करण्यात आला होता?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">तेल अवीव</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-chart-pie" style="color: #f59e0b;"></i></div><p class="question">५७. २०२५ मधील दरडोई जीडीपी कामगिरीच्या आधारावर कोणत्या सहकारी संस्थेला जगात प्रथम क्रमांक मिळाला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">अमूल</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-award" style="color: #8b5cf6;"></i></div><p class="question">५८. फ्रान्सने 'शेव्हेलियर डी लॉर्डे नॅशनल डू मेरिट' या सन्मानाने कोणाला गौरविले आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">सुनील कांत मुंजाल</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-seedling" style="color: #10b981;"></i></div><p class="question">५९. नीती आयोगाने अलीकडेच "Reimagining Agriculture: A Roadmap for Frontier Technology Led Transformation" हा उपक्रम कोणत्या शहरात लाँच केला?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: गांधीनगर</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-paw" style="color: #3b82f6;"></i></div><p class="question">६०. नुकतेच बातम्यांमध्ये असलेले नौरादेही अभयारण्य कोणत्या भारतीय राज्यात आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">मध्य प्रदेश</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide-container" id="slide13">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">13</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-music" style="color: #eab308;"></i></div><p class="question">६१. पंतप्रधान नरेंद्र मोदी यांनी 'वंदे मातरम' या राष्ट्रीय गीताच्या कितीव्या वर्धापन दिनानिमित्त आयोजित महोत्सवाचे उद्घाटन केले?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">१५० वर्षे</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-leaf" style="color: #ec4899;"></i></div><p class="question">६२. भारतात ग्रीन हायड्रोजनवरील आंतरराष्ट्रीय परिषद (ICGH 2025) कोणत्या मंत्रालयामार्फत आयोजित केली जात आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">नवीन आणि नवीकरणीय ऊर्जा मंत्रालय</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-robot" style="color: #ef4444;"></i></div><p class="question">६३. कृत्रिम बुद्धिमत्ता (AI) मधील नवकल्पना आणि संशोधनाला चालना देण्यासाठी तेलंगणा सरकारने सुरू केलेल्या नवीन उपक्रमाचे नाव काय आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">तेलंगणा आर्टिफिशियल इंटेलिजन्स इनोव्हेशन हब</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-chart-bar" style="color: #3b82f6;"></i></div><p class="question">६४. भारत आणि युनायटेड किंगडम यांच्यातील द्विपक्षीय बैठकीदरम्यान IN-UK-STP डॅशबोर्डचे उद्घाटन कोठे करण्यात आले?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: भारत मंडपम, नवी दिल्ली</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-ban-smoking" style="color: #8b5cf6;"></i></div><p class="question">६५. २००७ नंतर जन्मलेल्या लोकांसाठी तंबाखू उत्पादनांच्या वापरावर कायमस्वरूपी बंदी घालणारा जगातील पहिला देश बनून कोणत्या बेट राष्ट्राने इतिहास रचला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">मालदीव</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide-container" id="slide14">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">14</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-satellite" style="color: #10b981;"></i></div><p class="question">६६. अंतराळात एआय चिप्स पाठवण्याच्या उद्देशाने गुगलच्या नवीन संशोधन उपक्रमाचे नाव काय आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">प्रोजेक्ट सनकॅचर</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-ribbon" style="color: #f59e0b;"></i></div><p class="question">६७. भारतात राष्ट्रीय कर्करोग जागरूकता दिन कधी साजरा केला जातो?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">७ नोव्हेंबर</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-landmark" style="color: #ef4444;"></i></div><p class="question">६८. २०२५ च्या न्यूयॉर्क शहर महापौर निवडणुकीत कोणत्या डेमोक्रॅटिक सोशालिस्ट नेत्याने इतिहास रचला आणि ते शहराचे पहिले मुस्लिम व दक्षिण आशियाई महापौर बनले?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">झोहरान ममदानी</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-users" style="color: #3b82f6;"></i></div><p class="question">६९. २०२५ च्या अमेरिकेच्या राज्य निवडणुकांमध्ये भारतीय-अमेरिकन नेत्याने व्हर्जिनियाच्या लेफ्टनंट गव्हर्नर बनून इतिहास रचला, हे पद भूषवणाऱ्या त्या पहिल्या मुस्लिम बनल्या आहेत, त्या कोण?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: गझाला हाश्मी</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-solar-panel" style="color: #ec4899;"></i></div><p class="question">७०. COP28 शी जोडलेल्या ITA अहवालानुसार, स्वच्छ ऊर्जा औद्योगिक प्रकल्पांमध्ये भारताचा जागतिक क्रमांक कितवा आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">३ रा</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide-container" id="slide15">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">15</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-building" style="color: #8b5cf6;"></i></div><p class="question">७१. सांस्कृतिक संबंध आणि विद्यार्थ्यांच्या देवाणघेवाणीला प्रोत्साहन देण्यासाठी 'इंडिया हाऊस' स्थापन करण्याची योजना कोणता देश आखत आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">संयुक्त अरब अमिराती</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-award" style="color: #eab308;"></i></div><p class="question">७२. विज्ञान आणि तंत्रज्ञान क्षेत्रात 'मनोहर पर्रीकर युवा शास्त्रज्ञ पुरस्कार २०२५' च्या तिसऱ्या आवृत्तीचा मानकरी म्हणून कोणाची घोषणा करण्यात आली आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">साई गौतम गोपालकृष्णन</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-gas-pump" style="color: #10b981;"></i></div><p class="question">७३. सार्वजनिक उपक्रम निवड मंडळाने (PSEB) गेल (GAIL) इंडियाचे पुढील सीएमडी म्हणून कोणाची शिफारस केली आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">दीपक गुप्ता</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-plane" style="color: #ef4444;"></i></div><p class="question">७४. हिंदुस्तान एरोनॉटिक्स लिमिटेडने (HAL) एलसीए एमके१ए लढाऊ विमानांच्या पुढील बॅचसाठी जनरल इलेक्ट्रिकशी किती F404-GE-IN20 इंजिनांचा करार केला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: ११३</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-bowl-food" style="color: #3b82f6;"></i></div><p class="question">७५. जागतिक अन्न पुरस्कार फाउंडेशनने "टॉप अॅग्री-फूड पायनियर" म्हणून कोणाला सन्मानित केले आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">संजीव कपूर</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 16 -->
+<div class="slide-container" id="slide16">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">16</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-magnifying-glass-location" style="color: #ec4899;"></i></div><p class="question">७६. रवींद्र (रवी) कोरीशेट्टार यांची राज्योत्सव पुरस्कारासाठी निवड झाली आहे. राज्योत्सव पुरस्कार कोणत्या क्षेत्राशी संबंधित आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">पुरातत्वशास्त्र</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-star" style="color: #f59e0b;"></i></div><p class="question">७७. प्रदीप फॉस्फेट्स लिमिटेड (PPL) चे ब्रँड अॅम्बेसेडर म्हणून कोणाची नियुक्ती करण्यात आली आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">राहुल द्रविड</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-coins" style="color: #8b5cf6;"></i></div><p class="question">७८. NHPC लिमिटेडच्या सुवर्ण महोत्सवानिमित्त ५० रुपयांचे स्मरणार्थ नाणे कोणी जारी केले?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">मनोहर लाल</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-dove" style="color: #10b981;"></i></div><p class="question">७९. शांतता आणि विकासासाठी जागतिक विज्ञान दिन दरवर्षी कोणत्या तारखेला साजरा केला जातो?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: १० नोव्हेंबर</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-users-rays" style="color: #eab308;"></i></div><p class="question">८०. सहकार कुंभ २०२५ कोठे आयोजित करण्यात आला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">नवी दिल्ली</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 17 -->
+<div class="slide-container" id="slide17">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">17</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-plane-up" style="color: #ef4444;"></i></div><p class="question">८१. भारताचा एकमेव पूर्ण विकसित परदेशी हवाई तळ, 'आयनी एअरबेस' कोणत्या देशात आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">ताजिकिस्तान</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-calendar-check" style="color: #3b82f6;"></i></div><p class="question">८२. उत्तराखंडने कोणत्या वर्षी आपला २५ वा राज्य स्थापना दिन (रौप्य महोत्सव) साजरा केला?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">२०२५</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-film" style="color: #ec4899;"></i></div><p class="question">८३. ५६ वा भारतीय आंतरराष्ट्रीय चित्रपट महोत्सव (IFFI) कोठे आयोजित केला जाईल?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">गोवा</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-bus" style="color: #8b5cf6;"></i></div><p class="question">८४. जागतिक सार्वजनिक वाहतूक दिन दरवर्षी कधी साजरा केला जातो?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: १० नोव्हेंबर</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-face-smile" style="color: #f59e0b;"></i></div><p class="question">८५. टाईम आऊट सिटी लाईफ इंडेक्स २०२५ नुसार, कोणत्या शहराला आशियातील सर्वात आनंदी शहर घोषित करण्यात आले आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">मुंबई</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 18 -->
+<div class="slide-container" id="slide18">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">18</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-ship" style="color: #10b981;"></i></div><p class="question">८६. इंडो-पॅसिफिक प्रदेशात भारताची नौदल ताकद प्रदर्शित करण्यासाठी गुआम येथे आयोजित बहुपक्षीय 'मलबार २०२५ सरावा'मध्ये कोणते भारतीय नौदल जहाज सहभागी होत आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">आयएनएस सह्याद्री</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-handshake-angle" style="color: #eab308;"></i></div><p class="question">८७. नोव्हेंबर २०२५ मध्ये, सांस्कृतिक सहकार्य आणि वारसा देवाणघेवाण मजबूत करण्यासाठी कोणत्या दोन देशांनी नुकताच सामंजस्य करार केला?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">भारत आणि सौदी अरेबिया</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-train" style="color: #ef4444;"></i></div><p class="question">८८. नोव्हेंबर २०२५ मध्ये सुरू झालेल्या चार नवीन वंदे भारत एक्स्प्रेस मार्गांपैकी खालीलपैकी कोणता मार्ग नाही?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">मुंबई-नागपूर</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-dna" style="color: #3b82f6;"></i></div><p class="question">८९. डीएनए डबल-हेलिक्स रचनेचे सह-संशोधक जेम्स वॉटसन यांचे वयाच्या ९७ व्या वर्षी निधन झाले. त्यांना कोणत्या वर्षी नोबेल पारितोषिक मिळाले?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: १९६२</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-chess" style="color: #ec4899;"></i></div><p class="question">९०. ६ वी आशियान वैयक्तिक बुद्धिबळ चॅम्पियनशिप जिंकून भारताचा ९१ वा ग्रँडमास्टर कोण बनला आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">राहुल व्ही. एस.</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 19 -->
+<div class="slide-container" id="slide19">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">19</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-landmark-dome" style="color: #8b5cf6;"></i></div><p class="question">९१. कॉमनवेल्थ पार्लमेंटरी असोसिएशन (CPA) इंडिया रिजन झोन-३ च्या २२ व्या वार्षिक परिषदेचे उद्घाटन कोण करणार?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">ओम बिर्ला</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-book-open-reader" style="color: #f59e0b;"></i></div><p class="question">९२. भारतात कोणत्या तारखेला राष्ट्रीय शिक्षण दिन साजरा केला जातो?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">११ नोव्हेंबर</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-building-shield" style="color: #10b981;"></i></div><p class="question">९३. डिफेन्स पब्लिक सेक्टर अंडरटेकिंग्जच्या नुकत्याच झालेल्या आढावा बैठकीत चार DPSUs ना 'मिनीरत्न' दर्जा देण्यात आला. खालीलपैकी कोणती कंपनी यात नव्हती?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">भारत डायनॅमिक्स लिमिटेड (BDL)</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-basketball" style="color: #eab308;"></i></div><p class="question">९४. नोव्हेंबर २०२५ मध्ये निधन झालेले लेनी विल्केन्स हे कोणत्या खेळाशी संबंधित होते?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: बास्केटबॉल</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-mobile-screen" style="color: #ef4444;"></i></div><p class="question">९५. एमएस स्वामीनाथन रिसर्च फाउंडेशनने विकसित केलेल्या कोणत्या मोबाईल अॅपचा नुकताच 'टेक ४ नेचर' मध्ये समावेश करण्यात आला?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">फिशर फ्रेंड मोबाईल अॅप्लिकेशन</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<!-- SLIDE 20 -->
+<div class="slide-container" id="slide20">
+    <div class="notebook-content">
+        <div class="header-section"><h1 class="main-title">Current Affairs</h1><div class="page-number">20</div></div>
+        <div class="qa-container">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-calculator" style="color: #3b82f6;"></i></div><p class="question">९६. गणितातील उत्कृष्ट योगदानाबद्दल २०२५ चा 'शास्त्र रामानुजन पुरस्कार' मिळण्यासाठी कोणाची निवड करण्यात आली आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-green">डॉ. अलेक्झांडर स्मिथ</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-people-group" style="color: #ec4899;"></i></div><p class="question">९७. भारत-श्रीलंका संयुक्त लष्करी सराव 'मित्र शक्ती- २०२५' ची ११ वी आवृत्ती नोव्हेंबर २०२५ मध्ये कोणत्या भारतीय शहरात सुरू होईल?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">बेळगाव</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-font" style="color: #8b5cf6;"></i></div><p class="question">९८. २०२५ वर्षासाठी 'कॉलिन्स वर्ड ऑफ द इयर' (Word of the Year) म्हणून कोणत्या शब्दाची निवड करण्यात आली आहे?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-pink">व्हायब कोडिंग (Vibe Coding)</mark></p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-handshake" style="color: #10b981;"></i></div><p class="question">९९. नोव्हेंबर २०२५ मध्ये राष्ट्रपती द्रौपदी मुर्मू यांच्या अंगोला भेटीदरम्यान, अंगोलाने भारताला कोणत्या क्षेत्रात सहकार्य करण्याचे मान्य केले?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: नवीकरणीय ऊर्जा, वन्यजीव संवर्धन आणि जैवइंधन</p></div>
+            </div><hr class="doodle-line">
+            <div class="qa-block">
+                <div class="q-row"><div class="q-icon"><i class="fa-solid fa-book" style="color: #f59e0b;"></i></div><p class="question">१००. २०२५ चा 'बुकर पुरस्कार' (Booker Prize) कोणत्या लेखकाला प्रदान करण्यात आला?</p></div>
+                <div class="a-row"><div class="a-icon">↳</div><p class="answer">उत्तर: <mark class="hl-yellow">डेव्हिड स्झॅले (David Szalay)</mark></p></div>
+            </div>
+        </div>
+        <div class="footer-section"><div class="footer-text">Mission Adhikari 360</div></div>
+    </div>
+</div>
+
+<div class="action-buttons">
+    <button class="action-btn print-btn" onclick="window.print()">
+        <i class="fa-solid fa-file-pdf"></i> Save as PDF
+    </button>
+    <button class="action-btn" onclick="downloadHTML()">
+        <i class="fa-solid fa-download"></i> Download HTML
+    </button>
+</div>
+
+<script>
+    function downloadHTML() {
+        // Grab the entire HTML content
+        const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+        
+        // Create a Blob from the HTML string
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        
+        // Create a temporary anchor element and trigger the download
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Mission_Adhikari_360_Current_Affairs.html';
+        document.body.appendChild(a);
+        a.click();
+        
+        // Cleanup
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+
+</body></html>
